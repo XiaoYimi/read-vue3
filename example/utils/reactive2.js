@@ -68,13 +68,3 @@ function reactive(raw) {
 
   return raw;
 }
-
-const instance = reactive({
-  state: 0,
-});
-
-watchEffect(() => {
-  console.log(instance.state);
-});
-
-instance.state++;

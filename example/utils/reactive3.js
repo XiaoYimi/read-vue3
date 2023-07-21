@@ -65,6 +65,7 @@ const reactiveHandler = {
   },
   set(target, key, value, receiver) {
     const dep = getDep(target, key);
+
     const bool = Reflect.set(target, key, value, receiver);
     dep.notify();
     return bool;
@@ -75,11 +76,3 @@ const reactiveHandler = {
 function reactive(raw) {
   return new Proxy(raw, reactiveHandler);
 }
-
-const info = reactive({ state: 0 });
-
-watchEffect(() => {
-  console.log(info.state);
-});
-
-info.state++;

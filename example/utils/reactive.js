@@ -65,13 +65,3 @@ function watchEffect(effect) {
   effect();
   activeEffect = null;
 }
-
-const msg = new Dep('msg');
-const info = new Dep('info');
-
-watchEffect(() => {
-  console.log(msg.value);
-});
-
-msg.value = 123;
-console.log(msg.value);
